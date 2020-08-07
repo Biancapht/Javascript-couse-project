@@ -43,6 +43,7 @@ export default class Recipe {
         const newIngredients = this.ingredients.map(el => {
             let ingredient = el.toLowerCase(); // 確保沒有大寫
 
+
             unitsLong.forEach((unit, i) => { 
                 ingredient = ingredient.replace(unit, unitsShort[i]);
             });
