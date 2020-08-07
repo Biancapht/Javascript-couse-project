@@ -18,7 +18,9 @@ const state = {};
  */
 const controlSearch = async () => {
     // 1. 拿到 search 欄位輸入的值
-    const query = searchView.getInput();
+    // const query = searchView.getInput();
+    // Test
+    const query = 'pizza';
 
     if(query) {
         // 2. 新增 Search 物件，更改 state
@@ -48,6 +50,11 @@ elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
 });
+// Test
+window.addEventListener('load', e => {
+    e.preventDefault();
+    controlSearch();
+});
 
 // 點擊頁籤
 elements.searchResPages.addEventListener('click', e => {
@@ -71,6 +78,8 @@ const controlRecipe = async () => {
 
         // 2. 新增 Recipe 物件，更改 state
         state.recipe = new Recipe(id);
+        // Test
+        window.r = state.recipe;
 
         try {
             // 3. 取得 recipe 的結果

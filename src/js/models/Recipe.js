@@ -34,4 +34,25 @@ export default class Recipe {
     calcServings() {
         this.servings = 4;
     }
+
+    parseIntIngredients() {
+        const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
+        const unitsShort = ['tbps', 'tbps', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
+        
+        // 材料敘述轉換成縮寫的單位
+        const newIngredients = this.ingredients.map(el => {
+            let ingredient = el.toLowerCase(); // 確保沒有大寫
+
+            unitsLong.forEach((unit, i) => {
+                ingredient = ingredient.replace(unit, unitsShort[i]);
+            });
+
+            ingredient = ingredient.replace(/ *\([^)]*\) */g,' ');
+
+            return ingredient;
+
+        });
+
+        this.ingredients = newIngredients;
+    }
 }
